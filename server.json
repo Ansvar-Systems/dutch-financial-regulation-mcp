@@ -1,32 +1,37 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "eu.ansvar/dutch-financial-regulation-mcp",
-  "description": "AFM- en DNB-regelgeving bevragen: leidraden, beleidsregels, toezichtregelingen en handhavingsacties",
+  "description": "AFM (Autoriteit Financiële Markten) en DNB (De Nederlandsche Bank) financiële regelgeving MCP server — leidraden, toezichtregelingen, beleidsregels en handhavingsacties",
   "repository": {
     "url": "https://github.com/Ansvar-Systems/dutch-financial-regulation-mcp",
     "source": "github"
   },
   "homepage": "https://ansvar.eu",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "Apache-2.0",
   "keywords": [
-    "afm",
-    "dnb",
-    "dutch-financial-regulation",
+    "financial regulation",
     "netherlands",
-    "financial-services",
+    "regulation",
     "compliance",
-    "enforcement",
-    "mcp",
-    "ansvar"
+    "mcp"
   ],
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@ansvar/dutch-financial-regulation-mcp",
-      "version": "0.1.0",
+      "version": "1.0.0",
       "transport": {
         "type": "stdio"
+      }
+    },
+    {
+      "registryType": "npm",
+      "identifier": "@ansvar/dutch-financial-regulation-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "streamable-http",
+        "url": "https://mcp.ansvar.eu/dutch-financial-regulation/mcp"
       }
     }
   ]

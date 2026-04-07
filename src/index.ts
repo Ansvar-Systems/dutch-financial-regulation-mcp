@@ -26,6 +26,7 @@ import {
   searchEnforcement,
   checkProvisionCurrency,
 } from "./db.js";
+import { buildCitation } from "./citation.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -228,7 +229,17 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             `Bepaling niet gevonden: ${parsed.sourcebook} ${parsed.reference}`,
           );
         }
-        return textContent(provision);
+        const prov = provision as Record<string, unknown>;
+        return textContent({
+          ...prov,
+          _citation: buildCitation(
+            String(prov.reference ?? parsed.reference),
+            String(prov.title ?? prov.reference ?? parsed.reference),
+            "nl_fin_get_regulation",
+            { sourcebook: parsed.sourcebook, reference: parsed.reference },
+            prov.url != null ? String(prov.url) : undefined,
+          ),
+        });
       }
 
       case "nl_fin_list_sourcebooks": {

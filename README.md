@@ -117,7 +117,7 @@ All content is sourced from official Dutch regulatory publications:
 - Freshness checks run via GitHub Actions workflows
 - Last-updated timestamps in tool responses indicate data age
 
-See `sources.yml` for full provenance metadata.
+See [COVERAGE.md](COVERAGE.md) for full provenance and coverage metadata.
 
 ---
 
@@ -218,7 +218,7 @@ Apache License 2.0. See [LICENSE](./LICENSE) for details.
 
 ### Data Licenses
 
-Regulatory data sourced from official government publications. See `sources.yml` for per-source licensing details.
+Regulatory data sourced from official government publications. See [COVERAGE.md](COVERAGE.md) for per-source details.
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "name": "@ansvar/dutch-financial-regulation-mcp",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "mcpName": "eu.ansvar/dutch-financial-regulation-mcp",
   "description": "AFM (Autoriteit Financiële Markten) en DNB (De Nederlandsche Bank) financiële regelgeving MCP server — leidraden, toezichtregelingen, beleidsregels en handhavingsacties",
   "type": "module",

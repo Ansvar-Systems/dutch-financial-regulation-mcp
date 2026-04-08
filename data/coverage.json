@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "server": "eu.ansvar/dutch-financial-regulation-mcp",
+  "generated": "2026-04-08",
+  "overall_status": "partial",
+  "sourcebooks": [
+    {
+      "id": "AFM-LEIDRAAD",
+      "name": "AFM Leidraden",
+      "publisher": "Autoriteit Financiële Markten",
+      "publisher_url": "https://www.afm.nl/",
+      "status": "partial",
+      "notes": "Selected guidance documents ingested; not exhaustive"
+    },
+    {
+      "id": "AFM-BELEIDSREGEL",
+      "name": "AFM Beleidsregels",
+      "publisher": "Autoriteit Financiële Markten",
+      "publisher_url": "https://www.afm.nl/",
+      "status": "partial",
+      "notes": "Selected policy rules ingested; not exhaustive"
+    },
+    {
+      "id": "DNB-TOEZICHT",
+      "name": "DNB Toezichtregelingen",
+      "publisher": "De Nederlandsche Bank",
+      "publisher_url": "https://www.dnb.nl/",
+      "status": "partial",
+      "notes": "Selected supervisory regulations ingested; not exhaustive"
+    },
+    {
+      "id": "DNB-GOODPRACTICE",
+      "name": "DNB Good Practices",
+      "publisher": "De Nederlandsche Bank",
+      "publisher_url": "https://www.dnb.nl/",
+      "status": "partial",
+      "notes": "Selected good practice documents ingested; not exhaustive"
+    }
+  ],
+  "tools": [
+    "nl_fin_search_regulations",
+    "nl_fin_get_regulation",
+    "nl_fin_list_sourcebooks",
+    "nl_fin_search_enforcement",
+    "nl_fin_check_currency",
+    "nl_fin_about"
+  ]
+}

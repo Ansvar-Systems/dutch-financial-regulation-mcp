@@ -1,0 +1,79 @@
+# sources.yml — data provenance contract for dutch-financial-regulation-mcp.
+#
+# Status: AMBER as of 2026-05-16. AFM is the sole upstream and is publicly
+# serving here under Wet hergebruik overheidsinformatie + AFM's own on-site
+# attribution clause, pending legal sign-off on the clause's commercial-
+# redistribution scope.
+
+schema_version: "1.0"
+mcp_name: "Dutch Financial Regulation MCP"
+category: "regulation"
+jurisdiction: "Netherlands"
+
+sources:
+  - name: "AFM (Autoriteit Financiële Markten)"
+    authority: "Dutch Authority for the Financial Markets (ZBO under Wft)"
+    official_url: "https://www.afm.nl"
+    retrieval_method: "AUTOMATED"
+    retrieval_script: "scripts/ingest-afm.ts"
+    format:
+      - "HTML"
+    authentication: "none"
+    update_frequency: "weekly"
+    license:
+      spdx: "Custom-AFM-attribution"
+      type: "Custom permissive-with-attribution (effective CC-BY equivalent)"
+      url: "https://www.afm.nl/nl-nl/over-de-afm/over-deze-website"
+      summary: >-
+        AFM on-site notice declares "alle rechten voorbehouden" in the headline
+        but the body explicitly permits redistribution "geheel of gedeeltelijk
+        op enigerlei wijze" subject to explicit AFM source attribution
+        ("Uitsluitend met uitdrukkelijke bronvermelding van de AFM is het
+        toegestaan…"). Effective regime is closer to CC-BY than to "all rights
+        reserved" despite the headline. AFM is a ZBO under Wft so Wet hergebruik
+        overheidsinformatie applies on top, narrowing any restrictive reading.
+        Pending legal sign-off on whether the on-site attribution clause covers
+        commercial gateway redistribution at scale.
+    legal_basis:
+      - "Wet hergebruik overheidsinformatie (Who) — AFM is a ZBO under Wft, public-task content"
+      - "AFM on-site clause: redistribution permitted with explicit AFM source attribution"
+      - "Pending: legal sign-off on commercial-gateway-redistribution scope of AFM clause"
+    verification:
+      registry_status: "under_review"
+      registry_entry: "infrastructure/policy/source-authority-registry.yml (host: afm.nl)"
+      at_risk_entry: "infrastructure/policy/at-risk-mcps.yml (repo_name: dutch-financial-regulation-mcp, audit_class: AMBER)"
+      last_verified_at: "2026-05-16"
+      verified_by: "claude-dutch-licensing-audit-2026-05-16"
+    coverage:
+      scope: >-
+        AFM leidraden (guidance), actueel-rubriek nieuwsberichten (news/announcements),
+        boetebesluiten (sanction decisions). Wft itself out of scope (in dutch-law-mcp).
+        Pending corpus expansion: DNB Open Boek Toezicht (prudential supervision),
+        Ministerie van Financiën circulars, Wft implementing decrees (Bgfo, Bpr).
+      item_count: 49             # provisions + 2 enforcement actions as of last ingest
+    languages:
+      - "nl"
+    carve_outs:
+      - "AFM logo and visual identity are trademarked and never ingested"
+
+# Source-attribution contract enforced at response time:
+#   Every search/get tool response item carries _citation.{publisher, license, source_url}
+#   matching the values declared above. The MCP response includes "AFM" as the publisher
+#   prominently in citation.display_text so that consuming agents satisfy AFM's "uitdrukkelijke
+#   bronvermelding" clause automatically. License string Custom-AFM-attribution signals to the
+#   gateway that this is AMBER pending legal sign-off.
+#
+# Per-item source_url accuracy is a known gap as of 2026-05-16: the current DB schema does not
+# capture per-item URLs during ingestion. Responses fall back to publisher base URL
+# https://www.afm.nl/. Closing this requires DB schema + ingest script update + re-run.
+
+# Future-expansion sources (not currently ingested — listed for transparency and as a roadmap
+# reference). Adding any of these requires a new entry in source-authority-registry.yml AND
+# verification per docs/runbooks/source-licensing-audit-methodology.md:
+expansion_candidates:
+  - host: "dnb.nl"
+    authority: "De Nederlandsche Bank (prudential supervisor)"
+    relevance: "Open Boek Toezicht — prudential supervision policy + Q&A; HIGH-severity gap per 2026-05-16 audit"
+  - host: "rijksoverheid.nl"
+    authority: "Ministerie van Financiën"
+    relevance: "Wft implementing regulations (Bgfo, Bpr) + ministerial circulars"
